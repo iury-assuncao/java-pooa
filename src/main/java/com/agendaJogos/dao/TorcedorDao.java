@@ -9,6 +9,6 @@ public interface TorcedorDao {
     Torcedor findById(Integer id);
     List<Torcedor> findAll();
     void save(Torcedor user);
-    void update(Torcedor user);
+    Torcedor update(Torcedor user, Integer id);
     void delete(Integer id);
 }

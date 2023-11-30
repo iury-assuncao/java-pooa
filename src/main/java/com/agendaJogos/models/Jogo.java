@@ -3,25 +3,22 @@ import java.time.LocalTime;
 import java.util.Date;
 
 public class Jogo {
-    private String id_jogo;
+    private Integer id_jogo;
     private String time_casa;
     private String time_visitante;
     private Date data;
     private LocalTime horario;
+    private String local;
 
-    public Jogo(String time_casa, String time_visitante, Date data, LocalTime horario){
-        this.time_casa = time_casa;
-        this.time_visitante = time_visitante;
-        this.data = data;
-        this.horario = horario;
-
+    public Jogo() {
     }
 
-    public String getId_jogo() {
+
+    public Integer getId_jogo() {
         return id_jogo;
     }
 
-    public void setId_jogo(String id_jogo) {
+    public void setId_jogo(Integer id_jogo) {
         this.id_jogo = id_jogo;
     }
 
@@ -56,4 +53,12 @@ public class Jogo {
     public void setHorario(LocalTime horario) {
         this.horario = horario;
     }
+    public void setLocal(String local) {
+        this.local = local;
+    }
+
+    public String getLocal(){
+        return local;
+    }
 }
+
