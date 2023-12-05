@@ -23,7 +23,6 @@ public class TorcedorController {
     public ResponseEntity getAllTorcedores(){
         List<Torcedor> torcedores = torcedorService.getAllTorcedores();
         return ResponseEntity.ok(torcedores);
-
     }
     @GetMapping("/{id}")
     public ResponseEntity<Torcedor> getTorcedorById(@PathVariable Integer id) {
@@ -38,7 +37,6 @@ public class TorcedorController {
         } catch (Exception e) {
             return new ResponseEntity<>( HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 
     @PostMapping
@@ -50,7 +48,6 @@ public class TorcedorController {
         } catch (Exception e){
             return new ResponseEntity<>("Erro de ao criar torcedor", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 
     @PutMapping("/{id}")
@@ -67,7 +64,6 @@ public class TorcedorController {
             return new ResponseEntity<>("Erro ao atualizar torcedor", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteTorcedor(@PathVariable Integer id) {
         try{
@@ -79,10 +75,6 @@ public class TorcedorController {
             }
         } catch (Exception e){
             return new ResponseEntity<>("Erro ao deletar torcedor",HttpStatus.INTERNAL_SERVER_ERROR);
-
-
         }
-
-
     }
 }
