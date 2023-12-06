@@ -24,7 +24,7 @@ public class IngressoController {
     @PostMapping
     public ResponseEntity<String> createIngresso(@RequestBody Ingresso ingresso) {
         try {
-            ingressoService.save(ingresso);
+            ingressoService.saveIngresso(ingresso);
             return new ResponseEntity<>("Ingresso criado com sucesso", HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>("Erro ao criar ingresso", HttpStatus.INTERNAL_SERVER_ERROR);
@@ -34,7 +34,8 @@ public class IngressoController {
     @GetMapping("/{id}")
     public ResponseEntity<Ingresso> getIngressoById(@PathVariable Integer id) {
         try {
-            Ingresso ingresso = ingressoService.findById(id);
+
+            Ingresso ingresso = ingressoService.findIngressoById(id);
             if (ingresso != null) {
                 return new ResponseEntity<>(ingresso, HttpStatus.OK);
             } else {
@@ -47,7 +48,7 @@ public class IngressoController {
     @GetMapping
     public ResponseEntity getAllIngressos() {
         try {
-            List<Ingresso> ingressos = ingressoService.findAll();
+            List<Ingresso> ingressos = ingressoService.findAllIngressos();
             return new ResponseEntity<>(ingressos, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -60,6 +61,20 @@ public class IngressoController {
             return new ResponseEntity<>(ingressos, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteTorcedor(@PathVariable Integer id) {
+        try{
+            if (ingressoService.findIngressoById(id) != null) {
+                ingressoService.deleteIngresso(id);
+                return new ResponseEntity<>("Ingresso deletado com sucesso", HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("Ingresso não encontrado",HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e){
+            return new ResponseEntity<>("Erro ao deletar ingresso",HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

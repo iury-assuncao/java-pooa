@@ -20,22 +20,43 @@ public class IngressoDaoImpl implements IngressoDao {
 
     @Override
     public void save(Ingresso ingresso) {
-
+        String query = "INSERT INTO ingressos(id_torcedor, id_jogo) VALUES (?, ?)";
+        try {
+            jdbcTemplate.update(query, ingresso.getId_torcedor(), ingresso.getId_jogo());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void update(Ingresso ingresso) {
-
+        String query = "UPDATE ingressos SET id_torcedor = ?, id_jogo = ? WHERE id_ingresso = ?";
+        try {
+            jdbcTemplate.update(query, ingresso.getId_torcedor(), ingresso.getId_jogo(), ingresso.getId_ingresso());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void delete(Integer id_ingresso) {
-
+    public void delete(Integer id) {
+        String query = "DELETE FROM ingressos WHERE id_ingresso=?";
+        try {
+            jdbcTemplate.update(query, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public Ingresso findById(Integer id_ingresso) {
-        return null;
+    public Ingresso findById(Integer id) {
+        String query = "SELECT * FROM ingressos WHERE id_ingresso=?";
+        try {
+            return jdbcTemplate.queryForObject(query, new Object[]{id}, new IngressoRowMapper());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override

@@ -20,23 +20,23 @@ public class IngressoService {
     }
 
 
-    public void save(Ingresso ingresso) {
+    public void saveIngresso(Ingresso ingresso) {
         ingressoDao.save(ingresso);
     }
 
-    public void update(Ingresso ingresso) {
+    public void updateIngresso(Ingresso ingresso) {
         ingressoDao.update(ingresso);
     }
 
-    public void delete(Integer id_ingresso) {
+    public void deleteIngresso(Integer id_ingresso) {
         ingressoDao.delete(id_ingresso);
     }
 
-    public Ingresso findById(Integer id_ingresso) {
+    public Ingresso findIngressoById(Integer id_ingresso) {
         return ingressoDao.findById(id_ingresso);
     }
 
-    public List<Ingresso> findAll() {
+    public List<Ingresso> findAllIngressos() {
         return ingressoDao.findAll();
     }
 
